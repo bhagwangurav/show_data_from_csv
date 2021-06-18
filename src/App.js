@@ -6,13 +6,36 @@ import "bootstrap-css-only/css/bootstrap.min.css";
 import "mdbreact/dist/css/mdb.css";
 const App = () => {
   const [csvData, setCsvData] = useState({});
+  //const [apiToken, setApiToken] = useState("");
+  //localStorage.setItem("rememberMe", rememberMe);
   useEffect(() => {
-    fetch("https://enigmatic-ocean-08412.herokuapp.com/question")
-      .then((response) => {
-        return response.json();
-      })
+    const data = "email=bhagwan@gurav.com&password=bhagwan";
+    fetch("http://localhost:3000/auth_user", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+      body: data,
+    })
+      .then((response) => response.json())
       .then((data) => {
-        setCsvData(data.response);
+        fetch("http://localhost:3000/question", {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+            Authorization: "Bearer " + data.token,
+          },
+        })
+          .then((response) => {
+            return response.json();
+          })
+          .then((data) => {
+            console.log("Success:", data.response);
+            setCsvData(data.response);
+          });
+      })
+      .catch((error) => {
+        console.error("Error:", error);
       });
   }, []);
 
