@@ -10,7 +10,7 @@ const App = () => {
   //localStorage.setItem("rememberMe", rememberMe);
   useEffect(() => {
     const data = "email=bhagwan@gurav.com&password=bhagwan";
-    fetch("http://localhost:3000/auth_user", {
+    fetch("https://enigmatic-ocean-08412.herokuapp.com/auth_user", {
       method: "POST",
       headers: {
         "Content-Type": "application/x-www-form-urlencoded",
@@ -19,7 +19,7 @@ const App = () => {
     })
       .then((response) => response.json())
       .then((data) => {
-        fetch("http://localhost:3000/question", {
+        fetch("https://enigmatic-ocean-08412.herokuapp.com/question", {
           method: "GET",
           headers: {
             "Content-Type": "application/x-www-form-urlencoded",
