@@ -9,7 +9,7 @@ const App = () => {
   //const [apiToken, setApiToken] = useState("");
   //localStorage.setItem("rememberMe", rememberMe);
   useEffect(() => {
-    const data = "email=bhagwan@gurav.com&password=bhagwan";
+    const data = "email=bhagwan@gmail.com&password=bhagwan";
     fetch("https://enigmatic-ocean-08412.herokuapp.com/auth_user", {
       method: "POST",
       headers: {
