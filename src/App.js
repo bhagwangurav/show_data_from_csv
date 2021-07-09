@@ -6,7 +6,6 @@ import "bootstrap-css-only/css/bootstrap.min.css";
 import "mdbreact/dist/css/mdb.css";
 const App = () => {
   const [csvData, setCsvData] = useState({});
-  //const [apiToken, setApiToken] = useState("");
   useEffect(() => {
     const data = "email=bhagwan@gmail.com&password=bhagwan";
     fetch("https://enigmatic-ocean-08412.herokuapp.com/auth_user", {
